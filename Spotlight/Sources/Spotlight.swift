@@ -12,7 +12,8 @@ import UIKit
 public protocol SpotlightDelegate: AnyObject {
     func didAdvance(to node: Int, of total: Int)
     func didDismiss()
-	func getSpotlightPosition(_ currentNodeIndex: Int) -> Spotlight.EnumSpotlightPosition
+	  func getSpotlightPosition(_ currentNodeIndex: Int) -> Spotlight.EnumSpotlightPosition
+		func skipWalkthrough()
 }
 
 public final class Spotlight {
@@ -25,8 +26,9 @@ public final class Spotlight {
     public static var showInfoBackground: Bool = true
     public static var infoBackgroundEffect: UIBlurEffect.Style = .dark
     public static var backButtonTitle = "Back"
-	public static var nextButtonTitle = "Next"
-	public static var quiteButtonTitle = "Ok"
+	  public static var nextButtonTitle = "Next"
+	  public static var quiteButtonTitle = "Ok"
+	  public static var skipButtonTitle = "Skip"
 
     public weak var delegate: SpotlightDelegate?
 

@@ -29,8 +29,11 @@ extension SpotlightViewController {
     }
 
     func setupInfoView() {
+			skipButton = createButton()
+			  skipButton.setTitle(Spotlight.skipButtonTitle, for: .normal)
+			
         let closeButton = createCloseButton()
-        let closeStackView = UIStackView(arrangedSubviews: [createSpacer(), closeButton])
+        let closeStackView = UIStackView(arrangedSubviews: [createSpacer(), closeButton, createSpacer(), skipButton])
         closeStackView.axis = .horizontal
         closeStackView.alignment = .trailing
         closeStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -38,9 +41,10 @@ extension SpotlightViewController {
         backButton = createButton()
         backButton.setTitle(Spotlight.backButtonTitle, for: .normal)
         backButton.isHidden = true // Will be shown later
+			
         nextButton = createButton()
         nextButton.setTitle(Spotlight.nextButtonTitle, for: .normal)
-        let buttonsStack = UIStackView(arrangedSubviews: [backButton, createSpacer(), nextButton])
+			  let buttonsStack = UIStackView(arrangedSubviews: [backButton, createSpacer(), nextButton])
         buttonsStack.axis = .horizontal
 
         infoLabel = createLabel()

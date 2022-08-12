@@ -14,7 +14,7 @@ final class SpotlightViewController: UIViewController {
     weak var delegate: SpotlightDelegate?
     var backButton: UIButton!
     var nextButton: UIButton!
-
+		var skipButton: UIButton!
     // MARK: - View Controller Life cycle
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -78,6 +78,8 @@ extension SpotlightViewController {
         timer.invalidate()
         let title = button.titleLabel?.text ?? ""
         switch title {
+					case Spotlight.skipButtonTitle:
+						skipSpotlight()
         case Spotlight.nextButtonTitle:
             nextSpotlight()
         case Spotlight.backButtonTitle:
@@ -86,6 +88,10 @@ extension SpotlightViewController {
             dismissSpotlight()
         }
     }
+	
+	@objc func skipSpotlight() {
+		delegate?.skipWalkthrough()
+	}
 
     @objc func viewTapped(_: UITapGestureRecognizer) {
         timer.invalidate()
